@@ -3,13 +3,13 @@ FROM php:8.3-fpm-alpine
 ARG PHP_VERSION=8.3
 ARG XDEBUG=0
 
-# 1. Instalar dependencias del sistema
+# 1. Instalar dependencias del sistema (Añadido linux-headers)
 RUN apk add --no-cache \
     bash curl wget git unzip fcgi shadow \
     freetype-dev libjpeg-turbo-dev libpng-dev libwebp-dev \
     libzip-dev oniguruma-dev libxml2-dev icu-dev \
     pcre-dev openssl-dev libsodium-dev imagemagick-dev imagemagick \
-    # Herramientas de compilación (las mantendremos hasta el final)
+    linux-headers \
     g++ make autoconf
 
 # 2. Configurar e instalar extensiones core de PHP
